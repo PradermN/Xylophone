@@ -11,113 +11,43 @@ class XylophoneApp extends StatelessWidget {
     player.play(AssetSource('note$soundNumber.wav'));
   }
 
+  Expanded buildKey({required Color color, required int soundNumber, required String label}) {
+    return Expanded(
+      child: TextButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll<Color>(color),
+          shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          ),
+        ),
+        onPressed: () {
+          playSound(soundNumber);
+        },
+        child: Text(
+          label,
+          style: TextStyle(fontSize: 24, color: Colors.black),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.red),
-                  ),
-                  onPressed: () {
-                    playSound(1);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.orange),
-                  ),
-                  onPressed: () {
-                    playSound(2);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.yellow),
-                  ),
-                  onPressed: () {
-                    playSound(3);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.green),
-                  ),
-                  onPressed: () {
-                    playSound(4);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.teal),
-                  ),
-                  onPressed: () {
-                   playSound(5);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.blue),
-                  ),
-                  onPressed: () {
-                    playSound(6);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll <Color>(Colors.purple),
-                  ),
-                  onPressed: () {
-                    playSound(7);
-                  },
-                  child: Text(
-                    'Play Sound',
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                ),
-              ),
+              buildKey(color: Colors.red, soundNumber: 1, label: 'Do'),
+              buildKey(color: Colors.orange, soundNumber: 2, label: 'Re'),
+              buildKey(color: Colors.yellow, soundNumber: 3, label: 'Mi'),
+              buildKey(color: Colors.green, soundNumber: 4, label: 'Fa'),
+              buildKey(color: Colors.teal, soundNumber: 5, label: 'Sol'),
+              buildKey(color: Colors.blue, soundNumber: 6, label: 'La'),
+              buildKey(color: Colors.purple, soundNumber: 7, label: 'Si'),
             ],
           ),
         ),
